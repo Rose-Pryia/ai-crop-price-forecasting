@@ -1,0 +1,11 @@
+curl -X POST http://localhost:5001/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "state": "Andhra Pradesh",
+    "district": "Guntur",
+    "market": "Repalli",
+    "commodity": "Rice", 
+    "date": "2024-12-01"
+  }'
+
+  

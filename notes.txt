@@ -1,0 +1,17 @@
+Test the full setup
+
+Terminal 1 - Server:
+
+cd /Users/akshatmajila/crop-predict
+python server.py
+
+Terminal 2 - Client 1:
+
+cd /Users/akshatmajila/crop-predict
+python client1.py localhost:8080
+
+Terminal 3 - Client 2:
+
+cd /Users/akshatmajila/crop-predict
+python client2.py localhost:8080
+
