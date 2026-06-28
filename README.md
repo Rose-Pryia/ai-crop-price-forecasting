@@ -1,15 +1,176 @@
-# Crop Price Prediction API
+# AI-Powered Crop Price Forecasting using XGBoost, Prophet & Federated Learning
 
-A Flask-based REST API for predicting crop prices using XGBoost machine learning model. The API allows users to input basic information (state, district, market, commodity, and date) while the backend automatically calculates complex features like lag prices, moving averages, and historical trends.
+> An end-to-end machine learning system for forecasting agricultural commodity prices using historical market data, combining XGBoost, Prophet, and Federated Learning with a Flask REST API. This repository represents my implementation and contributions to a collaborative machine learning project focused on agricultural price forecasting.
 
-## Features
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Flask](https://img.shields.io/badge/Flask-REST%20API-green)
+![XGBoost](https://img.shields.io/badge/XGBoost-Regression-orange)
+![Prophet](https://img.shields.io/badge/Prophet-Time%20Series-purple)
+![Machine Learning](https://img.shields.io/badge/Machine-Learning-red)
 
-- **Simple Input**: Users only need to provide 5 basic inputs
-- **Backend Feature Engineering**: Automatically calculates lag prices, moving averages, min/max prices
-- **XGBoost Model**: Uses trained XGBoost model for accurate predictions
-- **RESTful API**: Clean JSON-based API endpoints
-- **Error Handling**: Comprehensive error handling and validation
+---
 
+# 📖 Overview
+
+Agricultural commodity prices are highly volatile due to seasonal variations, supply-demand imbalances, weather conditions, transportation constraints, and government policies.
+
+This project presents an end-to-end AI-powered crop price forecasting system that combines XGBoost, Prophet, and Federated Learning to predict agricultural commodity prices using historical market data from data.gov.in.
+
+Unlike traditional forecasting approaches, the system automatically performs feature engineering and supports decentralized model training through Federated Learning, allowing multiple regional datasets to collaboratively improve prediction performance while preserving data privacy.
+
+---
+
+## 📊 Dataset
+
+Source: data.gov.in
+
+Coverage:
+- January 2018 – December 2024
+- Multiple Indian states
+- Agricultural commodities including:
+  - Wheat
+  - Onion
+  - Rice
+  - Pulses
+
+The dataset was cleaned, preprocessed, and aggregated to ensure temporal consistency before model training.
+
+---
+
+# ✨ Key Features
+
+- AI-powered crop price prediction
+- XGBoost regression model
+- Prophet time-series forecasting
+- Federated Learning implementation
+- Automated feature engineering
+- Historical trend analysis
+- RESTful Flask API
+- JSON-based prediction responses
+- Modular machine learning pipeline
+- Robust input validation
+
+---
+
+# 🏗 System Architecture
+
+### XGBoost Workflow
+
+<p align="center">
+  <img src="images/xgb.png" width="500">
+</p>
+
+---
+
+### Prophet Workflow
+
+<p align="center">
+  <img src="images/pp.png" width="500">
+</p>
+
+---
+
+### Federated Learning Workflow
+
+<p align="center">
+  <img src="images/FL.png" width="700">
+</p>
+---
+
+## 🤖 Model Configuration
+
+### XGBoost
+
+- Max Depth: 6
+- Estimators: 500
+- Learning Rate: 0.05
+- Subsample: 0.8
+
+### Prophet
+
+- Automatic trend detection
+- Weekly seasonality
+- Yearly seasonality
+
+### Federated Learning
+
+- Federated Averaging (FedAvg)
+- Multiple regional clients
+- Privacy-preserving distributed training
+
+---
+
+# ⚙️ Feature Engineering
+
+The backend automatically generates predictive features including:
+
+- 1-day lag price
+- 7-day lag price
+- 30-day lag price
+- 7-day moving average
+- 30-day moving average
+- Historical minimum price
+- Historical maximum price
+- Month
+- Week of year
+- Day of week
+- Encoded categorical variables
+
+These engineered features significantly improve prediction performance without increasing user input complexity.
+
+---
+
+# 🛠️ Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Programming Language | Python |
+| Machine Learning | XGBoost |
+| Time Series Forecasting | Prophet |
+| Federated Learning | Flower |
+| Backend | Flask |
+| Data Processing | Pandas, NumPy |
+| Model Serialization | Pickle |
+| API Testing | cURL, Python |
+
+
+---
+
+# 📈 Prediction Workflow
+
+1. User submits crop details through the API.
+2. Input is validated.
+3. Historical data is retrieved.
+4. Feature engineering is performed automatically.
+5. Machine learning models generate predictions.
+6. Predicted crop price is returned as a JSON response.
+
+---
+
+# 📊 Model Performance
+
+| Model | Purpose |
+|--------|----------|
+| XGBoost | Regression-based crop price prediction |
+| Prophet | Seasonal and trend forecasting |
+| Federated Learning | Privacy-preserving collaborative learning |
+
+## Results
+
+| Model | MAE | RMSE | R² |
+|------|------:|------:|------:|
+| XGBoost | 82.64 | 225.20 | 0.9473 |
+| Prophet | 79.70 | 188.02 | 0.9630 |
+
+## Federated Learning Performance
+
+| Round | Global MAE | Global RMSE |
+|------|------:|------:|
+| 1 | 112.84 | 289.61 |
+| 2 | 97.52 | 256.37 |
+| 3 | 89.76 | 236.25 |
+
+---
 ## Installation
 
 1. **Install Dependencies**:
@@ -173,14 +334,6 @@ The API provides detailed error messages for:
 - Model loading issues
 - Internal server errors
 
-## Architecture
-
-The API follows this flow:
-1. **Input Validation**: Validates required fields and formats
-2. **Data Encoding**: Encodes categorical variables using saved label encoders
-3. **Feature Engineering**: Calculates lag prices, moving averages, and date features
-4. **Prediction**: Uses XGBoost model to predict the modal price
-5. **Response**: Returns formatted JSON response with prediction
 
 ## Notes
 
